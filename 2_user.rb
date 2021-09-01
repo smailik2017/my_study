@@ -11,3 +11,4 @@ end
 user1 = User.new
 puts "ФИО: #{user1.fio}"
 puts "Профессия: #{user1.profession}"
+

@@ -17,3 +17,4 @@ host1 = Host.new
 puts host1.name
 puts host1.ip_address
 puts host1.gateway
+

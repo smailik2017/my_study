@@ -27,3 +27,4 @@ puts "Цена билета: #{ticket.price}"
 puts "Ряд: #{ticket.row}"
 puts "Место: #{ticket.seat}"
 puts "Фильм: #{ticket.event}"
+

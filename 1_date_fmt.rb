@@ -28,5 +28,3 @@ when 12
 end
 
 puts "Сегодня #{v_date.day} #{v_month} #{v_date.year}"
-
-
