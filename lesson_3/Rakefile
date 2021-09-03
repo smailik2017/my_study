@@ -1,0 +1,4 @@
+task :current__date_time do
+  puts Time.now.strftime("Сегодня: %d.%m.%Y -- время: %T")
+end
+
