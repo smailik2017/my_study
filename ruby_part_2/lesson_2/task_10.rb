@@ -42,7 +42,6 @@ end
 
 show_calendar DateTime.now
 
-
 # Вывести календарь на год 2021
 =begin
 mon = 1
