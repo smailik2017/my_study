@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 arr = [[[1, 2], 3], [4, 5, 6], [7, [8, 9]]]
 p arr
 
@@ -11,7 +13,7 @@ def walk(arr, &block)
     when Integer
       yield el
     end
-  end 
+  end
 end
 
 walk(arr, &pr)
