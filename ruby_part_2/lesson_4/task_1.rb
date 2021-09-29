@@ -1,22 +1,23 @@
+# frozen_string_literal: true
+
 class Building
   def set_name(name)
     @name = name
   end
-  
-  def name
-    @name
-  end
-  
+
+  attr_reader :name
+
   def ready
     @status = true
   end
-  
+
   def not_ready
     @status = false
   end
-  
+
   def is_ready?
     return "#{name} is ready " if @status
+
     "#{name} is NOT ready"
   end
 end

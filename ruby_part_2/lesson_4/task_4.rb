@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class Factory
   @@teddy_bears = []
   @@balls = []
   @@cubes = []
   @@total = 0
-  
+
   def build(toy)
     @@total += 1
     case toy
@@ -15,13 +17,13 @@ class Factory
       @@cubes << Cube.new
     end
   end
-  
+
   class TeddyBear
   end
-  
+
   class Ball
   end
-  
+
   class Cube
   end
 
@@ -32,7 +34,6 @@ class Factory
   def offers
     [[:teddy_bear, @@teddy_bears.size], [:ball, @@balls.size], [:cube, @@cubes.size]].to_h
   end
-
 end
 
 f = Factory.new
@@ -45,4 +46,3 @@ f.build(:teddy_bear)
 
 puts "Tital toys is #{f.show_total}"
 puts "We have: #{f.offers}"
-

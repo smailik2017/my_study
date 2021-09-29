@@ -1,19 +1,22 @@
-MELT = 'melt' 
+# frozen_string_literal: true
+
+MELT = 'melt'
 FREEZ = 'freez'
 BOIL = 'boil'
 CONDENSE = 'condense'
 SUBLIME = 'sublime'
 DEPOSIT = 'deposit'
-POSIBLE_STATES = %w[MELT FREEZ BOIL CONDENSE SUBLIME DEPOSIT]
+POSIBLE_STATES = %w[MELT FREEZ BOIL CONDENSE SUBLIME DEPOSIT].freeze
 
 class Substance
   def set_status(status)
     return @status = status if POSIBLE_STATES.include?(status.upcase)
+
     @status = nil
   end
-  
+
   def show_status
-    return @status
+    @status
   end
 end
 
@@ -25,4 +28,3 @@ p a1.show_status
 
 a1.set_status('hello')
 p a1.show_status
-

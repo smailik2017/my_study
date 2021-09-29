@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 KING = 'king'
 QUEEN = 'queen'
 BISHOP = 'bishop'
@@ -8,24 +10,22 @@ PAWN = 'pawn'
 chess_figures_arr = [KING, QUEEN, BISHOP, ROOK, KNIGHT, PAWN]
 
 class ChessFigure
-  def name
-    @name
-  end
-  
+  attr_reader :name
+
   def set_name(name)
     @name = name
   end
-  
+
   def who_are_you
-    return 'It is KING' if self.name == KING
-    return 'It is QUEEN' if self.name == QUEEN
-    return 'It is BISHOP' if self.name == BISHOP
-    return 'It is ROOK' if self.name == ROOK
-    return 'It is KNIGHT' if self.name == KNIGHT
-    return 'It is PAWN' if self.name == PAWN
+    return 'It is KING' if name == KING
+    return 'It is QUEEN' if name == QUEEN
+    return 'It is BISHOP' if name == BISHOP
+    return 'It is ROOK' if name == ROOK
+    return 'It is KNIGHT' if name == KNIGHT
+    return 'It is PAWN' if name == PAWN
+
     'Such a figure does not exist'
-  end 
-  
+  end
 end
 
 # Массив фигур
@@ -34,7 +34,7 @@ chess_figures = []
 
 chess_figures_arr.each do |cf|
   chess_figures << ChessFigure.new
-  chess_figures.last.set_name(cf) 
+  chess_figures.last.set_name(cf)
 end
 
 chess_figures.each do |cf|
@@ -55,4 +55,3 @@ cf_3.set_name('шашка')
 p cf_1.who_are_you
 p cf_2.who_are_you
 p cf_3.who_are_you
-
