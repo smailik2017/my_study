@@ -1,7 +1,5 @@
 class Foo
-  attr_accessor :vv
   def initialize(arg = [])
-    @vv = arg
     arg.each do |method, name|
       define_singleton_method method do
         name
