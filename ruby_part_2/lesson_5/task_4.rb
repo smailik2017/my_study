@@ -1,26 +1,23 @@
 class Foo
   attr_accessor :vv
-  def initialize(arg = [].to_h)
+  def initialize(arg = [])
     @vv = arg
+    arg.each do |method, name|
+      define_singleton_method method do
+        name
+      end
+    end
   end
 end
 
 hash = {
-  red: 'RED',
   black: 'BLACK',
   green: 'GREEN'
 }
 
-hash.each do |method, name|
-  define_method method do
-    name
-  end
-end
-
+p hash
 
 foo = Foo.new(hash)
-
-p foo.vv
 p foo.green
 p foo.black
 
