@@ -1,0 +1,9 @@
+class User
+  attr_accessor :first_name :patronomic_name :last_name
+end
+
+usr = User.new
+
+usr.first_name = 'test'
+
+p usr
