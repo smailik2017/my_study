@@ -1,0 +1,16 @@
+# frozen_string_literal: true
+
+class String
+  def some_def
+    (upcase.split('').map { |x| x = upcase.count(x) > 1 ? ')' : '(' }).join
+  end
+end
+
+str = 'din'
+p "#{str} => #{str.some_def}"
+str = 'recede'
+p "#{str} => #{str.some_def}"
+str = 'Success'
+p "#{str} => #{str.some_def}"
+str = '(( @'
+p "#{str} => #{str.some_def}"
