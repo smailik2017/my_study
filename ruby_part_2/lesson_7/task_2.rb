@@ -1,6 +1,11 @@
+# frozen_string_literal: true
+
+##
+# Создадим класс User
+##
 class User
   attr_accessor :first_name, :patronomic_name, :last_name, :email
-  
+
   def initialize
     yield self
   end
@@ -12,7 +17,5 @@ usr = User.new do |u|
   u.last_name = 'Userov'
   u.email = 'User@user.ru'
 end
-
-
 
 p usr
