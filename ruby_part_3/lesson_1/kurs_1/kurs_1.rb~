@@ -1,5 +1,0 @@
-File.open('kurs_1.txt', 'w') do |file|
-  (0..).each do |x|
-    file.puts(x)
-  end
-end
