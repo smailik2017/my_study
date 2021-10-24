@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-arr = File.readlines('task_3.txt').map(&:chomp)
+arr = File.readlines('task_3.txt', chomp: true)
           .uniq
           .sort_by(&:size)
 
