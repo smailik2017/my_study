@@ -9,7 +9,7 @@ class Unit
     designer: 1
   }.freeze
 
-  attr_accessor :name, :team
+  attr_accessor :team
   attr_reader :roles_count
 
   def initialize
