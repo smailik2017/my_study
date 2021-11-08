@@ -9,7 +9,6 @@ class Cube
       Point.new(length,0,0),
       Point.new(length, length, 0)
       ]
-    # return 'Cube exists!' if @@cubes.include?(self)
     @@cubes << self
   end
 
