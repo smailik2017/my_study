@@ -1,46 +1,101 @@
+# frozen_string_literal: true
+
+##
+# Класс, который определяет Куб по восьми точкам. Если все вершины разных кубов совпадут, значит КУБЫ одинаковые
 class Cube
-  include Comparable
   attr_accessor :points
-  @@cubes = []
-  
-  def initialize(length)
-    @points = [
-      Point.new(0,0,0), 
-      Point.new(length,0,0),
-      Point.new(length, length, 0)
-      ]
-    @@cubes << self
+
+  def self.new(points)
+    if cube_exists?(points)
+      puts 'Cube already exists!!!'
+    else
+      obj = allocate
+      obj.points = points
+    end
   end
 
-  def self.show_all_cubes
-    @@cubes.each { |x| p x }
-  end
-  
-  def <=>(other)
-    (points[0] <=> other.points[0]) + (points[1] <=> other.points[1]) + (points[2] <=> other.points[2])
-  end
-  
-  class Point
-    include Comparable
-    attr_accessor :x, :y, :z
-    def initialize (x, y, z)
-      @x = x
-      @y = y
-      @z = z
+  def self.cube_exists?(points)
+    Cube.all_cubes.each do |cube|
+      res = true
+      cube.points.each do |x|
+        res &= points.include?(x)
+      end
+      return true if res
     end
-    
-    def <=>(other)
-      (x <=> other.x) + (y <=> other.y) + (z <=> other.z)
-    end
-    
+    false
+  end
+
+  def self.all_cubes
+    ObjectSpace.each_object(self).to_a
   end
 end
 
-cube1 = Cube.new(10)
-cube2 = Cube.new(20)
-cube3 = Cube.new(30)
-cube4 = Cube.new(10)
-cube5 = Cube.new(10)
-cube6 = Cube.new(40)
+##
+# Класс точки в 3D пространстве
+class Point
+  attr_accessor :x, :y, :z
 
-Cube::show_all_cubes
+  def initialize(x, y, z)
+    @x = x
+    @y = y
+    @z = z
+  end
+
+  ##
+  # Нужен, чтобы сработало include? в методе cube_exists
+  def ==(other)
+    x == other.x and y == other.y and z == other.z
+  end
+end
+
+## Уникальный КУБ №1
+Cube.new([Point.new(1, 1, 1),
+          Point.new(2, 2, 2),
+          Point.new(3, 3, 3),
+          Point.new(4, 4, 4),
+          Point.new(5, 5, 5),
+          Point.new(6, 6, 6),
+          Point.new(7, 7, 7),
+          Point.new(8, 8, 8)])
+
+## Дублирующий КУБ. Вершины в той же последовательности
+Cube.new([Point.new(1, 1, 1),
+          Point.new(2, 2, 2),
+          Point.new(3, 3, 3),
+          Point.new(4, 4, 4),
+          Point.new(5, 5, 5),
+          Point.new(6, 6, 6),
+          Point.new(7, 7, 7),
+          Point.new(8, 8, 8)])
+
+## Уникальный КУБ №2
+Cube.new([Point.new(1, 5, 1), # <--- #
+          Point.new(2, 2, 2),
+          Point.new(3, 3, 3),
+          Point.new(4, 4, 4),
+          Point.new(5, 5, 5),
+          Point.new(6, 6, 6),
+          Point.new(7, 7, 7),
+          Point.new(8, 8, 8)])
+
+## Уникальный КУБ №3
+Cube.new([Point.new(1, 1, 1),
+          Point.new(2, 2, 2),
+          Point.new(3, 3, 3),
+          Point.new(4, 4, 4),
+          Point.new(5, 15, 5), # <--- #
+          Point.new(6, 6, 6),
+          Point.new(7, 7, 7),
+          Point.new(8, 8, 8)])
+
+## Дублирующийся КУБ с КУБОМ №2
+Cube.new([Point.new(7, 7, 7),
+          Point.new(2, 2, 2),
+          Point.new(3, 3, 3),
+          Point.new(4, 4, 4),
+          Point.new(5, 5, 5),
+          Point.new(6, 6, 6),
+          Point.new(1, 5, 1), # <--- #
+          Point.new(8, 8, 8)])
+
+puts Cube.all_cubes
