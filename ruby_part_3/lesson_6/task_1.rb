@@ -14,4 +14,14 @@ end
 
 p n
 
+# Вариант 1
 p Array.new(n - 1) { |i| i + 1 } + Array.new(n) { |i| n - i }
+
+# Вариант 2
+arr = [n]
+while n > 1
+  n -= 1
+  arr << n
+  arr.unshift(n)
+end
+p arr
