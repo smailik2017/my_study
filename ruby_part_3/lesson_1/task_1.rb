@@ -4,3 +4,4 @@ filename = ARGV[0]
 
 arr = File.readlines(filename)
 puts arr[rand(arr.size)]
+
