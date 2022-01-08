@@ -10,18 +10,7 @@ h1 {
 
 .header {
   display: flex;
-  /* border: 4px double black; */
-}
-
-.header-left {
-  width: 50%;
-  /* border: 4px double black; */
-}
-
-.header-right {
-  width: 50%;
-  text-align: right;
-  /* border: 4px double black; */
+  justify-content: space-between;
 }
 
 .content {
