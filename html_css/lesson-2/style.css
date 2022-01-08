@@ -1,0 +1,38 @@
+.container {
+  width: 1140px;
+  margin: 0 auto;
+  /* border: 4px double black; */
+}
+
+h1 {
+  width: 510px;
+}
+
+.header {
+  display: flex;
+  /* border: 4px double black; */
+}
+
+.header-left {
+  width: 50%;
+  /* border: 4px double black; */
+}
+
+.header-right {
+  width: 50%;
+  text-align: right;
+  /* border: 4px double black; */
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  /* border: 4px double black; */
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-start;
+  /* border: 4px double black; */
+}
