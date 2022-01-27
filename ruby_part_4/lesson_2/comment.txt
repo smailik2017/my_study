@@ -1,0 +1,8 @@
+1. On client: ssh-keygen
+2. On client: sftp // copy id_rsa.pub to server
+3. On server: cat id_rsa.pub >> authorized_keys in /root/.ssh
+4. On server: service sshd restart
+
+From client:
+ssh root@<IP addr>
+
