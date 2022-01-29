@@ -1,8 +1,35 @@
-1. On client: ssh-keygen
-2. On client: sftp // copy id_rsa.pub to server
-3. On server: cat id_rsa.pub >> authorized_keys in /root/.ssh
-4. On server: service sshd restart
+Task_1:
+cd
+cd ..
 
-From client:
-ssh root@<IP addr>
+Task_2:
+echo "Helo world!" > file.txt
+ls > file.txt
+vi file.txt
+   ...
+   :wq
+
+cp file.txt file1.txt
+mkdir d1
+mkdir -p d1/d12/d123
+
+mv file* ./d1/d12/d123/
+
+Task_3:
+На клиентском ПК
+1. $ ssh-keygen
+2. $ cd
+3. $ cd .ssh
+4. $ sftp <user>@<ip server> 
+5. sftp> put id_rsa.pub
+
+На сервере
+1. $ sudo su - 
+2. # cd /home/<user>
+3. # cat id_rsa.pub >> /root/.ssh/authorized_keys
+4. Внести правки в файл конфигурации sshd (приложен)
+5. service sshd restart
+
+Для входа на сервер по ключу с клиентского ПК:
+1. $ ssh root@<IP addr>
 
