@@ -1,0 +1,49 @@
+task_1:
+
+$ sudo useradd user1
+$ sudo userdel user1
+
+$ sudo vi /etc/passwd
+user1:x:1001:1001::/home/user1:/bin/sh
+:wq
+$ sudo passwd user1
+or
+$ sudo vi /etc/shadow
+user1:!:19022:0:99999:7:::
+:wq
+
+######################################
+
+task_2:
+
+$ sudo groupadd group1
+$ sudo groupdel group1
+
+$ sudo vi /etc/group
+group1:x:1002:
+:wq
+
+$ sudo vi /etc/gshadow
+group1:!::
+:wq
+
+$ sudo usermod -aG group1,group2 user1
+$ sudo usermod -g group1 user1
+$ sudo usermod -g user1 -G user1 user1 
+
+######################################
+
+task_3:
+
+$ sudo vi /etc/sudoers
+user1   ALL=(ALL) NOPASSWD:ALL
+x!
+
+######################################
+
+task_4:
+
+$ sudo vi /etc/sudoers
+user1   ALL= NOPASSWD: /usr/sbin/groupdel
+x!
+
