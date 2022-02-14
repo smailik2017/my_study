@@ -1,0 +1,147 @@
+Task_1:
+$ echo "Hello world!" > file1
+$ cp file1 file2
+$ ln -s file1 file3
+$ ln file1 file4
+
+$ ls -li
+total 12
+526861 -rw-rw-r-- 2 maks maks 12 Feb 14 13:08 file1
+526869 -rw-rw-r-- 1 maks maks 12 Feb 14 13:08 file2
+526874 lrwxrwxrwx 1 maks maks  5 Feb 14 13:08 file3 -> file1
+526861 -rw-rw-r-- 2 maks maks 12 Feb 14 13:08 file4
+
+$ rm file1 
+
+$ ls -l
+total 8
+-rw-rw-r-- 1 maks maks 12 Feb 14 13:08 file2
+lrwxrwxrwx 1 maks maks  5 Feb 14 13:08 file3 -> file1
+-rw-rw-r-- 1 maks maks 12 Feb 14 13:08 file4
+
+$ ls -li
+total 8
+526869 -rw-rw-r-- 1 maks maks 12 Feb 14 13:08 file2
+526874 lrwxrwxrwx 1 maks maks  5 Feb 14 13:08 file3 -> file1
+526861 -rw-rw-r-- 1 maks maks 12 Feb 14 13:08 file4
+
+символическая ссылка поломалась, но никуда не исчезла.
+$ cat file3
+cat: file3: No such file or directory
+
+Если записать в символическую ссылку что - ни будь (echo "Hi" > file3), то появится файл file1 :), но с другим  inode (т.е. по факту мы создадим новый файл).
+Жесткая ссылка осталась без изменений, с тем же содержанием что и была создана.
+
+################################################################################
+################################################################################
+################################################################################
+
+
+Task_2 (символическая ссылка развалилась):
+maks@localhost:~$ touch file1
+maks@localhost:~$ cp file1 file2
+maks@localhost:~$ ln -s file1 file3
+maks@localhost:~$ ln file1 file4
+maks@localhost:~$ mv file1 test1
+maks@localhost:~$ mv file2 test2
+maks@localhost:~$ mv file3 test3
+maks@localhost:~$ mv file4 test4
+maks@localhost:~$ mkdir test
+maks@localhost:~$ ls
+test  test1  test2  test3  test4
+maks@localhost:~$ ls -l
+total 4
+drwxrwxr-x 2 maks maks 4096 Feb 14 13:23 test
+-rw-rw-r-- 2 maks maks    0 Feb 14 13:21 test1
+-rw-rw-r-- 1 maks maks    0 Feb 14 13:22 test2
+lrwxrwxrwx 1 maks maks    5 Feb 14 13:22 test3 -> file1
+-rw-rw-r-- 2 maks maks    0 Feb 14 13:21 test4
+maks@localhost:~$ ls -li
+total 4
+526875 drwxrwxr-x 2 maks maks 4096 Feb 14 13:23 test
+526861 -rw-rw-r-- 2 maks maks    0 Feb 14 13:21 test1
+526866 -rw-rw-r-- 1 maks maks    0 Feb 14 13:22 test2
+526869 lrwxrwxrwx 1 maks maks    5 Feb 14 13:22 test3 -> file1
+526861 -rw-rw-r-- 2 maks maks    0 Feb 14 13:21 test4
+maks@localhost:~$ mv test3 test4 test
+test/  test1  test2  test3  test4  
+maks@localhost:~$ mv test3 test4 test
+test/  test1  test2  test3  test4  
+maks@localhost:~$ mv test3 test4 test/
+maks@localhost:~$ ls
+test  test1  test2
+maks@localhost:~$ ls test/test
+ls: cannot access 'test/test': No such file or directory
+maks@localhost:~$ ls test/
+test3  test4
+maks@localhost:~$ ls -l test/
+total 0
+lrwxrwxrwx 1 maks maks 5 Feb 14 13:22 test3 -> file1
+-rw-rw-r-- 2 maks maks 0 Feb 14 13:21 test4
+maks@localhost:~$ ls -li test/
+total 0
+526869 lrwxrwxrwx 1 maks maks 5 Feb 14 13:22 test3 -> file1
+526861 -rw-rw-r-- 2 maks maks 0 Feb 14 13:21 test4
+maks@localhost:~$ cd test/
+maks@localhost:~/test$ cat test3 
+cat: test3: No such file or directory
+maks@localhost:~/test$ 
+ 
+символическая ссылка развалилась, жесткая ссылка продолжает работать.
+
+################################################################################
+################################################################################
+################################################################################
+
+Task_3:
+$ touch f1 f2
+
+$ ls -l
+total 0
+-rw-rw-r-- 1 maks maks 0 Feb 14 13:28 f1
+-rw-rw-r-- 1 maks maks 0 Feb 14 13:28 f2
+
+$ chmod 664 f1
+$ chmod o=rw,g=,o= f2
+
+$ ls -l
+total 0
+-rw-rw-r-- 1 maks maks 0 Feb 14 13:34 f1
+-rw------- 1 maks maks 0 Feb 14 13:34 f2
+
+################################################################################
+################################################################################
+################################################################################
+
+Task_4:
+# useradd dev1
+# useradd dev2
+# useradd dev3
+# groupadd developer
+# usermod dev1 -g developer
+# usermod dev2 -g developer
+# usermod dev3 -g developer
+# cd /
+# mkdir developers
+# chown -R root:developer developers
+# chmod -R 770 developers
+# su - dev1
+$ umask 007
+$ cd /developers
+$ touch file1 file2
+
+$ ls -l
+total 0
+-rw-rw---- 1 dev1 developer 0 Feb 14 14:19 file1
+-rw-rw---- 1 dev1 developer 0 Feb 14 14:19 file2
+
+$ exit
+# su - dev2
+$ cd /developers
+$ rm file1
+$ echo "Hi" > file2
+
+
+
+
+
