@@ -63,15 +63,9 @@ total 4
 526866 -rw-rw-r-- 1 maks maks    0 Feb 14 13:22 test2
 526869 lrwxrwxrwx 1 maks maks    5 Feb 14 13:22 test3 -> file1
 526861 -rw-rw-r-- 2 maks maks    0 Feb 14 13:21 test4
-maks@localhost:~$ mv test3 test4 test
-test/  test1  test2  test3  test4  
-maks@localhost:~$ mv test3 test4 test
-test/  test1  test2  test3  test4  
 maks@localhost:~$ mv test3 test4 test/
 maks@localhost:~$ ls
 test  test1  test2
-maks@localhost:~$ ls test/test
-ls: cannot access 'test/test': No such file or directory
 maks@localhost:~$ ls test/
 test3  test4
 maks@localhost:~$ ls -l test/
