@@ -136,6 +136,44 @@ $ rm file1
 $ echo "Hi" > file2
 
 
+################################################################################
+################################################################################
+################################################################################
+Task_5:
+# cd /developers
+# mkdir exchange
+# chmod 1770 exchange
+
+# su - dev1
+$ touch /developers/exchange/file_dev1
+$ exit
+# su - dev2
+$ rm /developers/exchange/file_dev1
+rm: cannot remove '/developers/exchange/file_dev1': Operation not permitted
+$ ls -l /developers/exchange/
+total 0
+-rw-rw---- 1 dev1 developer 0 Feb 17 12:55 file_dev1
+$ exit
+# su - dev1
+$ rm /developers/exchange/file_dev1
+$ ls /developers/exchange
 
 
+################################################################################
+################################################################################
+################################################################################
+Task_6:
+# mkdir /developers
+# chmod 710 /developers
+# cd /developers
+# echo "111" > file1
+# echo "222" > file2
+# echo "333" > file3
+# chmod 660 file*
+# chown -R root:developer /developers
 
+# su - dev1
+$ ls /developers
+ls: cannot open directory '/developers': Permission denied
+$ cat /developers/file1
+111
