@@ -1,0 +1,38 @@
+Task_1:
+root@localhost:~# cat /etc/apt/sources.list.d/nginx.list
+deb http://nginx.org/packages/ubuntu focal nginx
+
+root@localhost:~# apt update
+root@localhost:~# apt install nginx -y
+root@localhost:~# dpkg -r nginx
+
+##########################################################
+##########################################################
+##########################################################
+Task_2:
+
+root@localhost:~# snap install netcalc
+
+
+##########################################################
+##########################################################
+##########################################################
+Task_3:
+
+root@localhost:~# iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+root@localhost:~# iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+root@localhost:~# iptables -P INPUT DROP
+
+
+##########################################################
+##########################################################
+##########################################################
+Task_4:
+
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+
+
+
+
+
+
