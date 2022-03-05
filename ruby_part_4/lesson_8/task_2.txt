@@ -1,0 +1,4 @@
+1. Копируем каталог nginx-php в корень /
+2. cd /nginx-php
+3. docker-compose up -d
+

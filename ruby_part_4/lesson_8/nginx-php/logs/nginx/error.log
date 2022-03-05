@@ -1,0 +1,30 @@
+2022/03/05 10:58:12 [notice] 1#1: using the "epoll" event method
+2022/03/05 10:58:12 [notice] 1#1: nginx/1.21.6
+2022/03/05 10:58:12 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/03/05 10:58:12 [notice] 1#1: OS: Linux 5.4.0-100-generic
+2022/03/05 10:58:12 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/03/05 10:58:12 [notice] 1#1: start worker processes
+2022/03/05 10:58:12 [notice] 1#1: start worker process 24
+2022/03/05 10:58:12 [notice] 1#1: start worker process 25
+2022/03/05 10:59:18 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2022/03/05 10:59:18 [notice] 25#25: gracefully shutting down
+2022/03/05 10:59:18 [notice] 25#25: exiting
+2022/03/05 10:59:18 [notice] 25#25: exit
+2022/03/05 10:59:18 [notice] 24#24: gracefully shutting down
+2022/03/05 10:59:18 [notice] 24#24: exiting
+2022/03/05 10:59:18 [notice] 24#24: exit
+2022/03/05 10:59:18 [notice] 1#1: signal 17 (SIGCHLD) received from 24
+2022/03/05 10:59:18 [notice] 1#1: worker process 24 exited with code 0
+2022/03/05 10:59:18 [notice] 1#1: signal 29 (SIGIO) received
+2022/03/05 10:59:18 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2022/03/05 10:59:18 [notice] 1#1: worker process 25 exited with code 0
+2022/03/05 10:59:18 [notice] 1#1: exit
+2022/03/05 11:00:07 [notice] 1#1: using the "epoll" event method
+2022/03/05 11:00:07 [notice] 1#1: nginx/1.21.6
+2022/03/05 11:00:07 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/03/05 11:00:07 [notice] 1#1: OS: Linux 5.4.0-100-generic
+2022/03/05 11:00:07 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/03/05 11:00:07 [notice] 1#1: start worker processes
+2022/03/05 11:00:07 [notice] 1#1: start worker process 22
+2022/03/05 11:00:07 [notice] 1#1: start worker process 23
+2022/03/05 11:00:36 [error] 22#22: *1 open() "/var/www/hello.dev/index.html" failed (2: No such file or directory), client: 192.168.122.1, server: hello.dev, request: "GET /index.html HTTP/1.1", host: "192.168.122.190"
