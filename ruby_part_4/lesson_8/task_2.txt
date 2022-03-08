@@ -1,4 +1,6 @@
-1. Копируем каталог nginx-php в корень /
-2. cd /nginx-php
-3. docker-compose up -d
+Честно говоря воспользовался статьей: https://admin812.ru/kak-sozdat-obraz-docker-s-pomoshhyu-dockerfile-v-ubuntu-20-04-lts.html
+
+для запуска: в каталоге task2
+docket build -t nginx-image .
+docker run -d -v /task1/webroot:/var/www/html -p 80:80 --name test-container nginx-image
 
