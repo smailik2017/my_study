@@ -11,7 +11,7 @@ class App
   attr_accessor :title, :description
   
   ## в методичке ошибка, пропущены апострофы в объявлении функции ##
-  def initialize(title: 'title', description: 'description') 
+  def initialize(title: '', description: '') 
     @title = title
     @description = description
   end
