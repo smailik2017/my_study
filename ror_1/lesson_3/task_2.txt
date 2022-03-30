@@ -1,0 +1,20 @@
+В файле config/application.ru в "class Application < Rails::Application" пишем:
+    Dir.each_child('lib') do |x|
+      config.eager_load_paths << Rails.root.join("lib/#{x}")
+    end
+Сами классы создаем как описано в задании
+результат:
+maks@maks-HP-Pavilion-15-Notebook-PC:~/my_study/ror_1/lesson_3/task_2$ rails c
+Loading development environment (Rails 7.0.2.3)
+3.0.0 :001 > obj1 = Hello.new
+ => #<Hello:0x0000563cfe73afc8> 
+3.0.0 :002 > obj2 = Gb.new
+ => #<Gb:0x00007f72c86d09b0> 
+3.0.0 :003 > obj1.greeting
+Hello world!
+ => nil                                           
+3.0.0 :004 > obj2.count
+ => 318 
+3.0.0 :005 > 
+                                                  
+                             
