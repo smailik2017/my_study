@@ -1,0 +1,5 @@
+.wrapper
+  h1
+    | О нас
+    .itemtext
+      = YAML.load_file('config/description.yml')['about']
